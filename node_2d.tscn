@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=3 uid="uid://t7xjw5dtw74s"]
+
+[ext_resource type="Texture2D" uid="uid://r0n6ned4vcvk" path="res://icon.svg" id="1_cywvy"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Node" type="Node" parent="."]
+
+[node name="TextureRect" type="TextureRect" parent="Node"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_cywvy")

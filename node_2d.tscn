@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://t7xjw5dtw74s"]
+[gd_scene load_steps=3 format=3 uid="uid://t7xjw5dtw74s"]
 
 [ext_resource type="Texture2D" uid="uid://r0n6ned4vcvk" path="res://icon.svg" id="1_cywvy"]
+[ext_resource type="Script" path="res://teststs.cs" id="2_l0u4o"]
 
 [node name="Node2D" type="Node2D"]
 
@@ -13,3 +14,4 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("1_cywvy")
+script = ExtResource("2_l0u4o")

@@ -17,5 +17,3 @@ _dialogController = NodePath("../Dialog_Node")
 [node name="Character_Node" parent="." instance=ExtResource("3_bf81x")]
 
 [node name="Dialog_Node" parent="." instance=ExtResource("3_0opx3")]
-
-[editable path="Dialog_Node"]

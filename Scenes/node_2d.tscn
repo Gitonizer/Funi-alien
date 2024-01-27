@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://t7xjw5dtw74s"]
+
+[ext_resource type="Script" path="res://Scripts/Character_Generator.cs" id="1_1bggd"]
+[ext_resource type="PackedScene" uid="uid://b6big2masb30o" path="res://Nodes/background_node.tscn" id="2_pdipv"]
+[ext_resource type="PackedScene" uid="uid://c6mx7kjqq3n0m" path="res://Nodes/dialog_node.tscn" id="3_0opx3"]
+
+[node name="Main_Node2D" type="Node2D"]
+
+[node name="Character_Generator" type="Node" parent="."]
+script = ExtResource("1_1bggd")
+
+[node name="Background_Node" parent="." instance=ExtResource("2_pdipv")]
+
+[node name="Character_Node" type="Node" parent="."]
+
+[node name="Character_Sprite2D" type="Sprite2D" parent="Character_Node"]
+
+[node name="Dialog_Node" parent="." instance=ExtResource("3_0opx3")]

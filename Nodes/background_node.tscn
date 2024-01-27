@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://b6big2masb30o"]
 
-[ext_resource type="Texture2D" uid="uid://r0n6ned4vcvk" path="res://icon.svg" id="1_rp07e"]
-[ext_resource type="Script" path="res://teststs.cs" id="2_fr100"]
+[ext_resource type="Texture2D" uid="uid://r0n6ned4vcvk" path="res://Textures/icon.svg" id="1_rp07e"]
+[ext_resource type="Script" path="res://Scripts/teststs.cs" id="2_fr100"]
 
 [node name="Background_Node" type="Node"]
 

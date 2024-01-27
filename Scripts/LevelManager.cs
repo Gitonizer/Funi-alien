@@ -34,11 +34,17 @@ public partial class LevelManager : Node
 	public void RunRound()
 	{
 		// Generate joke buttons
-		// 
 	}
 
-	// Called every frame. 'delta' is the elapsed time since the previous frame.
-	public override void _Process(double delta)
+	public void EvaluateAnswer()
+    {
+        // Run dialog
+		// Change mood bar
+		// evaluate if game ending
+    }
+
+    // Called every frame. 'delta' is the elapsed time since the previous frame.
+    public override void _Process(double delta)
 	{
     }
 }

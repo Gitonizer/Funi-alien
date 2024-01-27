@@ -14,6 +14,8 @@ public partial class LevelManager : Node
 {
 	[Export]
 	private CharacterView _mainCharacter;
+    [Export]
+    private DialogController _dialogController;
 	private FileHelper _fileHelper;
 
 	private CharacterModel[] _characters;
@@ -29,6 +31,7 @@ public partial class LevelManager : Node
 
 		_characters = _fileHelper.LoadTextFromFile<CharacterModel[]>("characters.json");
         _jokes = _fileHelper.LoadTextFromFile<JokeModel[]>("jokes.json");
+
 
         GD.Print(_jokes[0].Text);
 
@@ -51,10 +54,12 @@ public partial class LevelManager : Node
 		List<JokeModel> roundJokes = GetRandomJokes();
 
         foreach (var joke in roundJokes)
-        {
+        {            
             GD.Print("----------");
             GD.Print(joke.Text);
         }
+
+        _dialogController.SetJokeButton(roundJokes);
 
         //generate jokes
     }

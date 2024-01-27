@@ -7,12 +7,15 @@
 
 [node name="Main_Node2D" type="Node2D"]
 
-[node name="Level_Manager" type="Node" parent="." node_paths=PackedStringArray("_mainCharacter")]
+[node name="Level_Manager" type="Node" parent="." node_paths=PackedStringArray("_mainCharacter", "_dialogController")]
 script = ExtResource("1_i7cin")
 _mainCharacter = NodePath("../Character_Node")
+_dialogController = NodePath("../Dialog_Node")
 
 [node name="Background_Node" parent="." instance=ExtResource("2_pdipv")]
 
 [node name="Character_Node" parent="." instance=ExtResource("3_bf81x")]
 
 [node name="Dialog_Node" parent="." instance=ExtResource("3_0opx3")]
+
+[editable path="Dialog_Node"]

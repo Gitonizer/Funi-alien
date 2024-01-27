@@ -1,20 +1,51 @@
-[gd_scene format=3 uid="uid://c6mx7kjqq3n0m"]
+[gd_scene load_steps=3 format=3 uid="uid://c6mx7kjqq3n0m"]
 
-[node name="Dialog_Node" type="Node"]
+[ext_resource type="Script" path="res://Scripts/DialogController.cs" id="1_7r8t6"]
+[ext_resource type="Script" path="res://Scripts/JokeButtonController.cs" id="2_bs3nu"]
 
-[node name="RichTextLabel" type="RichTextLabel" parent="."]
-anchors_preset = 12
-anchor_top = 1.0
+[node name="Dialog_Node" type="Node" node_paths=PackedStringArray("_buttonsContainer", "_jokeButtonControllers")]
+script = ExtResource("1_7r8t6")
+_buttonsContainer = NodePath("Control")
+_jokeButtonControllers = [NodePath("Control/Button"), NodePath("Control/Button2"), NodePath("Control/Button3")]
+
+[node name="Control" type="Control" parent="."]
+clip_contents = true
+layout_mode = 3
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 62.0
-offset_top = -138.0
-offset_right = -30.0
 grow_horizontal = 2
-grow_vertical = 0
-bbcode_enabled = true
-text = "[center]Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam in augue interdum, iaculis velit nec, iaculis sapien. Proin sodales quam in consequat dignissim. Ut vel sollicitudin orci, vitae gravida arcui.[/center] 
+grow_vertical = 2
 
-sdsdsdsdsdsdsdsd"
-autowrap_mode = 1
-text_direction = 3
+[node name="Button3" type="Button" parent="Control"]
+custom_minimum_size = Vector2(185, 140)
+layout_mode = 0
+offset_left = 723.0
+offset_top = 203.0
+offset_right = 908.0
+offset_bottom = 443.0
+text = "Joke 
+Type"
+script = ExtResource("2_bs3nu")
+
+[node name="Button2" type="Button" parent="Control"]
+custom_minimum_size = Vector2(185, 140)
+layout_mode = 0
+offset_left = 486.0
+offset_top = 197.0
+offset_right = 671.0
+offset_bottom = 437.0
+text = "Joke 
+Type"
+script = ExtResource("2_bs3nu")
+
+[node name="Button" type="Button" parent="Control"]
+custom_minimum_size = Vector2(185, 140)
+layout_mode = 0
+offset_left = 237.0
+offset_top = 197.0
+offset_right = 422.0
+offset_bottom = 437.0
+text = "Joke 
+Type"
+script = ExtResource("2_bs3nu")

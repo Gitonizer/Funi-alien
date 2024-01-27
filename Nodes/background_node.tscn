@@ -1,6 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://b6big2masb30o"]
-
-[ext_resource type="Script" path="res://Scripts/teststs.cs" id="2_fr100"]
+[gd_scene load_steps=3 format=3 uid="uid://b6big2masb30o"]
 
 [sub_resource type="Gradient" id="Gradient_frht4"]
 offsets = PackedFloat32Array(0, 0.974026)
@@ -21,4 +19,3 @@ offset_bottom = -3.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = SubResource("GradientTexture2D_vynsh")
-script = ExtResource("2_fr100")

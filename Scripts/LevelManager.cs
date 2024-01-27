@@ -10,6 +10,8 @@ using System;
 
 public partial class LevelManager : Node
 {
+	[Export]
+	private CharacterView _mainCharacter;
 	private FileHelper _fileHelper;
 
 	private CharacterModel[] _characters;
@@ -27,6 +29,9 @@ public partial class LevelManager : Node
         _jokes = _fileHelper.LoadTextFromFile<JokeModel[]>("jokes.json");
 
         _currentCharacter = _characters[GD.Randi() % _characters.Length];
+		
+		_mainCharacter.SetCharacter(_currentCharacter.Name);
+
 
 		RunRound();
     }

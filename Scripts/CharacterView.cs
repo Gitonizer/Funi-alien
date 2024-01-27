@@ -18,15 +18,16 @@ public partial class CharacterView : Node
 
 	private Texture  _faceBasetexture;
 	private Texture  _hairtexture;
-	private Texture  _expressiontexture;
+	private Texture  _neutralExpressiontexture;
+	private Texture  _angryExpressiontexture;
+	private Texture  _happyExpressiontexture;
 
 	private string _characterName;
 
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
-		
-
+		//SetCharacter("Baby");
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -42,20 +43,23 @@ public partial class CharacterView : Node
 		try{
 			_faceBasetexture  = GD.Load<Texture>($"{basePath}faceBase.png");
 			_hairtexture  = GD.Load<Texture>($"{basePath}hairbase.png");
-			_expressiontexture  = GD.Load<Texture>($"{basePath}expression.png");
+			_neutralExpressiontexture  = GD.Load<Texture>($"{basePath}expression_neutral.png");
+			_angryExpressiontexture  = GD.Load<Texture>($"{basePath}expression_angry.png");
+			_happyExpressiontexture  = GD.Load<Texture>($"{basePath}expression_happy.png");
+
 		
 		}catch(Exception e){
 			GD.Print($"Error while getting Textures: {e.Message}");
 		}
 
-		GD.Print("Setting Textures...");
-		if(_faceBase!= null){
+		GD.Print("Setting Sprites...");
+		try{
 						
 			_faceBase.Texture = (Texture2D)_faceBasetexture;
 			_hairBase.Texture = (Texture2D) _hairtexture;
-			_expressionBase.Texture = (Texture2D) _expressiontexture;
-		}else{
-			GD.Print("_faceBase is NULL!!!");
+			_expressionBase.Texture = (Texture2D) _neutralExpressiontexture;
+		}catch(Exception e){
+			GD.Print($"Error while setting Sprites: {e.Message}");
 		}
 		
 	}

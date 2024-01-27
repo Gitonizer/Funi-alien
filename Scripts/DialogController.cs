@@ -7,27 +7,60 @@ public partial class DialogController : Node
 	[Export]
 	private Control _buttonsContainer;
 	[Export]
+	private Control _dialogContainer;
+	[Export]
+	private RichTextLabel _dialogText;
+	[Export]
+	private Button _nextButton;
+	[Export]
 	private JokeButtonController[] _jokeButtonControllers;
 	
+	public Action onNext;
 
-	  public override void _Ready()
-	  {
-		
-	  }
-
-	private void ButtonPressed(JokeModel jokeModel)
+	public override void _Ready()
 	{
-		//TODO: write text on the screen
-		GD.Print($"{jokeModel.Text}");
+		_dialogContainer.Visible = false;
+		_buttonsContainer.Visible = true;		
+		_nextButton.Pressed += NextButtonPressed;
+	}
+
+	private void JokeButtonPressed(JokeModel jokeModel)
+	{
+		_dialogText.Text = jokeModel.Text;
+		SwitchPanels();
+	}
+
+	private void NextButtonPressed(){
+		
+		ReleaseButton();
+		onNext?.Invoke();
+		SwitchPanels();
+	}
+
+	private void ReleaseButton()
+	{
+		for(int i= 0; i< _jokeButtonControllers.Length; i++)
+		{
+			GD.Print("Release");
+			_jokeButtonControllers[i].ReleaseBttn();
+		}
 	}
 
 	public void SetJokeButton(List<JokeModel> jokeModels ){
 		
 		for(int i= 0; i< _jokeButtonControllers.Length; i++)
 		{
+			GD.Print("SetJokeButton...");
+
 			_jokeButtonControllers[i].SetJokeButton(jokeModels[i]);
-			_jokeButtonControllers[i].onJokeSelection += ButtonPressed;
+			
+			_jokeButtonControllers[i].onJokeSelection += JokeButtonPressed;
 		}
+	}	
+
+	private void SwitchPanels()
+	{
+		_dialogContainer.Visible = !_dialogContainer.Visible; 
+		_buttonsContainer.Visible = !_buttonsContainer.Visible;	
 	}
-	
 }

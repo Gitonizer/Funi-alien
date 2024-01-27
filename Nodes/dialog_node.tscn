@@ -1,14 +1,43 @@
-[gd_scene load_steps=3 format=3 uid="uid://c6mx7kjqq3n0m"]
+[gd_scene load_steps=8 format=3 uid="uid://c6mx7kjqq3n0m"]
 
 [ext_resource type="Script" path="res://Scripts/DialogController.cs" id="1_7r8t6"]
 [ext_resource type="Script" path="res://Scripts/JokeButtonController.cs" id="2_bs3nu"]
 
-[node name="Dialog_Node" type="Node" node_paths=PackedStringArray("_buttonsContainer", "_jokeButtonControllers")]
-script = ExtResource("1_7r8t6")
-_buttonsContainer = NodePath("Control")
-_jokeButtonControllers = [NodePath("Control/Button"), NodePath("Control/Button2"), NodePath("Control/Button3")]
+[sub_resource type="Gradient" id="Gradient_87m8p"]
+colors = PackedColorArray(0.141176, 0.133333, 0.180392, 1, 0.207843, 0.180392, 0.239216, 0.745098)
 
-[node name="Control" type="Control" parent="."]
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_kb3w2"]
+gradient = SubResource("Gradient_87m8p")
+fill_from = Vector2(0.965812, 1)
+fill_to = Vector2(0.974359, 0.102564)
+
+[sub_resource type="FontFile" id="FontFile_ry2a8"]
+cache/0/16/0/ascent = 0.0
+cache/0/16/0/descent = 0.0
+cache/0/16/0/underline_position = 0.0
+cache/0/16/0/underline_thickness = 0.0
+cache/0/16/0/scale = 1.0
+cache/0/16/0/kerning_overrides/16/0 = Vector2(0, 0)
+
+[sub_resource type="Gradient" id="Gradient_b5ocd"]
+offsets = PackedFloat32Array(1)
+colors = PackedColorArray(0.330029, 0.407207, 0.190307, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_0ojpw"]
+gradient = SubResource("Gradient_b5ocd")
+width = 200
+height = 46
+
+[node name="Dialog_Node" type="Node" node_paths=PackedStringArray("_buttonsContainer", "_dialogContainer", "_dialogText", "_nextButton", "_jokeButtonControllers")]
+script = ExtResource("1_7r8t6")
+_buttonsContainer = NodePath("JokeBttContainer_Control")
+_dialogContainer = NodePath("DialogContainer_Control")
+_dialogText = NodePath("DialogContainer_Control/RichTextLabel")
+_nextButton = NodePath("DialogContainer_Control/NextButton")
+_jokeButtonControllers = [NodePath("JokeBttContainer_Control/Button"), NodePath("JokeBttContainer_Control/Button2"), NodePath("JokeBttContainer_Control/Button3")]
+
+[node name="JokeBttContainer_Control" type="Control" parent="."]
+visible = false
 clip_contents = true
 layout_mode = 3
 anchors_preset = 15
@@ -17,7 +46,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Button3" type="Button" parent="Control"]
+[node name="Button3" type="Button" parent="JokeBttContainer_Control"]
 custom_minimum_size = Vector2(185, 140)
 layout_mode = 0
 offset_left = 723.0
@@ -28,7 +57,7 @@ text = "Joke
 Type"
 script = ExtResource("2_bs3nu")
 
-[node name="Button2" type="Button" parent="Control"]
+[node name="Button2" type="Button" parent="JokeBttContainer_Control"]
 custom_minimum_size = Vector2(185, 140)
 layout_mode = 0
 offset_left = 486.0
@@ -39,7 +68,7 @@ text = "Joke
 Type"
 script = ExtResource("2_bs3nu")
 
-[node name="Button" type="Button" parent="Control"]
+[node name="Button" type="Button" parent="JokeBttContainer_Control"]
 custom_minimum_size = Vector2(185, 140)
 layout_mode = 0
 offset_left = 237.0
@@ -49,3 +78,47 @@ offset_bottom = 437.0
 text = "Joke 
 Type"
 script = ExtResource("2_bs3nu")
+
+[node name="DialogContainer_Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="TextureRect" type="TextureRect" parent="DialogContainer_Control"]
+layout_mode = 0
+offset_left = 10.0
+offset_top = -221.0
+offset_right = 1133.0
+offset_bottom = -65.0
+texture = SubResource("GradientTexture2D_kb3w2")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="DialogContainer_Control"]
+layout_mode = 0
+offset_left = 56.0
+offset_top = -193.0
+offset_right = 1092.0
+offset_bottom = -86.0
+text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi sed sodales velit, nec laoreet enim. Aenean euismod est at fermentum ultricies. Fusce erat lorem, tristique ut mauris eget, venenatis vestibulum ex. Vestibulum faucibus justo ut libero mattis pharetra. Nulla aliquet ultrices justo, volutpat cursus odio. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas."
+
+[node name="NextButton" type="Button" parent="DialogContainer_Control"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -236.0
+offset_top = -103.0
+offset_right = -18.0
+offset_bottom = -38.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_fonts/font = SubResource("FontFile_ry2a8")
+text = "Next"
+icon = SubResource("GradientTexture2D_0ojpw")
+icon_alignment = 1
+expand_icon = true

@@ -35,6 +35,8 @@ public partial class LevelManager : Node
 
         GD.Print(_jokes[0].Text);
 
+        _dialogController.onNext += RunRound;
+
         StartLevel();
     }
 
@@ -50,14 +52,9 @@ public partial class LevelManager : Node
 
 	public void RunRound()
 	{
+        GD.Print("RunRound..");
         // get jokes
 		List<JokeModel> roundJokes = GetRandomJokes();
-
-        foreach (var joke in roundJokes)
-        {            
-            GD.Print("----------");
-            GD.Print(joke.Text);
-        }
 
         _dialogController.SetJokeButton(roundJokes);
 

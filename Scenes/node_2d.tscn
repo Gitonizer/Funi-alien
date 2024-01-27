@@ -7,9 +7,8 @@
 
 [node name="Main_Node2D" type="Node2D"]
 
-[node name="Level_Manager" type="Node" parent="." node_paths=PackedStringArray("_mainCharacter")]
+[node name="Level_Manager" type="Node" parent="."]
 script = ExtResource("1_i7cin")
-_mainCharacter = NodePath("../Character_Node")
 
 [node name="Background_Node" parent="." instance=ExtResource("2_pdipv")]
 

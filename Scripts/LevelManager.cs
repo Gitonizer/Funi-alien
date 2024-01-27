@@ -1,5 +1,7 @@
 using Godot;
 using System;
+using System.Collections.Generic;
+using System.Linq;
 
 /*
 	TODO:
@@ -28,18 +30,34 @@ public partial class LevelManager : Node
 		_characters = _fileHelper.LoadTextFromFile<CharacterModel[]>("characters.json");
         _jokes = _fileHelper.LoadTextFromFile<JokeModel[]>("jokes.json");
 
+        GD.Print(_jokes[0].Text);
+
+        StartLevel();
+    }
+
+	public void StartLevel()
+	{
         _currentCharacter = _characters[GD.Randi() % _characters.Length];
 		
 		_mainCharacter.SetCharacter(_currentCharacter.Name);
 
 
-		RunRound();
+        RunRound();
     }
 
 	public void RunRound()
 	{
-		// Generate joke buttons
-	}
+        // get jokes
+		List<JokeModel> roundJokes = GetRandomJokes();
+
+        foreach (var joke in roundJokes)
+        {
+            GD.Print("----------");
+            GD.Print(joke.Text);
+        }
+
+        //generate jokes
+    }
 
 	public void EvaluateAnswer()
     {
@@ -51,5 +69,29 @@ public partial class LevelManager : Node
     // Called every frame. 'delta' is the elapsed time since the previous frame.
     public override void _Process(double delta)
 	{
+    }
+
+    private List<JokeModel> GetRandomJokes()
+    {
+        JokeModel[] likeJokes = _jokes.Where(joke => joke.Type == _currentCharacter.Like).ToArray();
+        JokeModel[] dislikeJokes = _jokes.Where(joke => joke.Type == _currentCharacter.Dislike).ToArray();
+        JokeModel[] neutralJokes = _jokes.Where(joke => joke.Type == _currentCharacter.Neutral).ToArray();
+
+        GD.Print("JOKE SIZE: " + _jokes.Length);
+
+        if (likeJokes.Length == 0 || dislikeJokes.Length == 0 || neutralJokes.Length == 0)
+        {
+            GD.Print("NOT ENOUGH JOKES FOR THE ROUND");
+            return new List<JokeModel>();
+        }
+
+        List<JokeModel> returnJokes = new List<JokeModel>
+        {
+            likeJokes[GD.Randi() % likeJokes.Length],
+            dislikeJokes[GD.Randi() % likeJokes.Length],
+            neutralJokes[GD.Randi() % likeJokes.Length]
+        };
+
+        return returnJokes;
     }
 }

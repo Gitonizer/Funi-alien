@@ -1,20 +1,20 @@
 [
 	{
-		"Name": "Lady",
-		"Like": "mamocas",
-		"Dislike": "maminhas",
-		"Neutral": "mamonas"
+		"Name": "velha",
+		"Like": "fart",
+		"Dislike": "technology",
+		"Neutral": "babble"
 	},
 	{
-		"Name": "Bruno",
-		"Like": "mamocas",
-		"Dislike": "maminhas",
-		"Neutral": "mamonas"
+		"Name": "bebé",
+		"Like": "babble",
+		"Dislike": "fart",
+		"Neutral": "technology"
 	},
 	{
-		"Name": "Baby",
-		"Like": "mamocas",
-		"Dislike": "maminhas",
-		"Neutral": "mamonas"
+		"Name": "puto",
+		"Like": "technology",
+		"Dislike": "babble",
+		"Neutral": "fart"
 	}
 ]

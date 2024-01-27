@@ -26,6 +26,7 @@ public partial class DialogController : Node
 
 	private void JokeButtonPressed(JokeModel jokeModel)
 	{
+		GD.Print("JokeButtonPressed");
 		_dialogText.Text = jokeModel.Text;
 		SwitchPanels();
 	}
@@ -43,6 +44,7 @@ public partial class DialogController : Node
 		{
 			GD.Print("Release");
 			_jokeButtonControllers[i].ReleaseBttn();
+			_jokeButtonControllers[i].onJokeSelection -= JokeButtonPressed;
 		}
 	}
 

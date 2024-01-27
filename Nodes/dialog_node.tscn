@@ -12,6 +12,9 @@ fill_from = Vector2(0.965812, 1)
 fill_to = Vector2(0.974359, 0.102564)
 
 [sub_resource type="FontFile" id="FontFile_ry2a8"]
+subpixel_positioning = 0
+msdf_pixel_range = 14
+msdf_size = 128
 cache/0/16/0/ascent = 0.0
 cache/0/16/0/descent = 0.0
 cache/0/16/0/underline_position = 0.0

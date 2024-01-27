@@ -1,17 +1,10 @@
 [gd_scene load_steps=3 format=3 uid="uid://t7xjw5dtw74s"]
 
-[ext_resource type="Texture2D" uid="uid://r0n6ned4vcvk" path="res://icon.svg" id="1_cywvy"]
-[ext_resource type="Script" path="res://teststs.cs" id="2_l0u4o"]
+[ext_resource type="PackedScene" uid="uid://b6big2masb30o" path="res://background_node.tscn" id="1_gr1x3"]
+[ext_resource type="PackedScene" uid="uid://c6mx7kjqq3n0m" path="res://dialog_node.tscn" id="2_mpwws"]
 
-[node name="Node2D" type="Node2D"]
+[node name="Main_Node2D" type="Node2D"]
 
-[node name="Node" type="Node" parent="."]
+[node name="Background_Node" parent="." instance=ExtResource("1_gr1x3")]
 
-[node name="TextureRect" type="TextureRect" parent="Node"]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("1_cywvy")
-script = ExtResource("2_l0u4o")
+[node name="Dialog_Node" parent="." instance=ExtResource("2_mpwws")]

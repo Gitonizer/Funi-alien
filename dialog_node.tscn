@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://c6mx7kjqq3n0m"]
+
+[node name="Dialog_Node" type="Node"]
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 62.0
+offset_top = -138.0
+offset_right = -30.0
+grow_horizontal = 2
+grow_vertical = 0
+bbcode_enabled = true
+text = "[center]Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam in augue interdum, iaculis velit nec, iaculis sapien. Proin sodales quam in consequat dignissim. Ut vel sollicitudin orci, vitae gravida arcui.[/center] 
+
+sdsdsdsdsdsdsdsd"
+autowrap_mode = 1
+text_direction = 3

@@ -1,25 +1,43 @@
 using Godot;
 using System;
 using System.IO;
+using System.Text.Json;
 
-public partial class FileHelper : Node
+public partial class FileHelper
 {
-	// Called when the node enters the scene tree for the first time.
-	public override void _Ready()
-	{
-	}
+    static string path;
 
-	// Called every frame. 'delta' is the elapsed time since the previous frame.
-	public override void _Process(double delta)
+	public FileHelper()
 	{
-	}
+        path = ProjectSettings.GlobalizePath("res://Resources/");
+    }
 
-	private string LoadTextFromFile(string path, string fileName)
+	public T LoadTextFromFile<T>(string fileName)
 	{
 		string data = null;
+		string filePath = null;
 
-		path = Path.Join(path, fileName);
+		T returnData = default(T);
+
+        filePath = Path.Join(path, fileName);
+
+		if (!File.Exists(filePath))
+		{
+			GD.Print("no file found");
+			return returnData;
+		}
 		
-		return path;
+		try
+        {
+            data = File.ReadAllText(filePath);
+			GD.Print(data);
+            returnData = JsonSerializer.Deserialize<T>(data);
+        }
+		catch (JsonException e)
+		{
+			GD.Print(e);
+		}
+
+        return returnData;
 	}
 }

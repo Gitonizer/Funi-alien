@@ -1,18 +1,17 @@
-[gd_scene load_steps=4 format=3 uid="uid://t7xjw5dtw74s"]
+[gd_scene load_steps=5 format=3 uid="uid://t7xjw5dtw74s"]
 
-[ext_resource type="Script" path="res://Scripts/Character_Generator.cs" id="1_1bggd"]
+[ext_resource type="Script" path="res://Scripts/LevelManager.cs" id="1_i7cin"]
 [ext_resource type="PackedScene" uid="uid://b6big2masb30o" path="res://Nodes/background_node.tscn" id="2_pdipv"]
 [ext_resource type="PackedScene" uid="uid://c6mx7kjqq3n0m" path="res://Nodes/dialog_node.tscn" id="3_0opx3"]
+[ext_resource type="PackedScene" uid="uid://dbiegpqggetma" path="res://character_node.tscn" id="3_bf81x"]
 
 [node name="Main_Node2D" type="Node2D"]
 
-[node name="Character_Generator" type="Node" parent="."]
-script = ExtResource("1_1bggd")
+[node name="Level_Manager" type="Node" parent="."]
+script = ExtResource("1_i7cin")
 
 [node name="Background_Node" parent="." instance=ExtResource("2_pdipv")]
 
-[node name="Character_Node" type="Node" parent="."]
-
-[node name="Character_Sprite2D" type="Sprite2D" parent="Character_Node"]
+[node name="Character_Node" parent="." instance=ExtResource("3_bf81x")]
 
 [node name="Dialog_Node" parent="." instance=ExtResource("3_0opx3")]

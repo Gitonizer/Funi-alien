@@ -1,5 +1,9 @@
-[gd_scene format=3 uid="uid://dbiegpqggetma"]
+[gd_scene load_steps=2 format=3 uid="uid://dbiegpqggetma"]
+
+[ext_resource type="Script" path="res://Scripts/CharacterView.cs" id="1_7sknb"]
 
 [node name="Character_Node" type="Node"]
+script = ExtResource("1_7sknb")
 
-[node name="Character_Sprite2D" type="Sprite2D" parent="."]
+[node name="Character_Base_Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(622, 300)

@@ -14,8 +14,8 @@ public partial class FileHelper
 
 	public T LoadTextFromFile<T>(string fileName)
 	{
-		string data = null;
-		string filePath = null;
+		string data;
+		string filePath;
 
 		T returnData = default(T);
 
@@ -30,7 +30,6 @@ public partial class FileHelper
 		try
         {
             data = File.ReadAllText(filePath);
-			GD.Print(data);
             returnData = JsonSerializer.Deserialize<T>(data);
         }
 		catch (JsonException e)

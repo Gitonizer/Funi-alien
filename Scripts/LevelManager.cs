@@ -10,19 +10,35 @@ using System;
 
 public partial class LevelManager : Node
 {
-	FileHelper _fileHelper;
-	// Called when the node enters the scene tree for the first time.
-	public override void _Ready()
+	private FileHelper _fileHelper;
+
+	private CharacterModel[] _characters;
+    private JokeModel[] _jokes;
+
+	private CharacterModel _currentCharacter;
+	private JokeModel _currentJoke;
+
+    // Called when the node enters the scene tree for the first time.
+    public override void _Ready()
 	{
         _fileHelper = new FileHelper();
 
-		GD.Print(_fileHelper.LoadTextFromFile<Character_Model[]>("characters.json")[0].Name);
+		_characters = _fileHelper.LoadTextFromFile<CharacterModel[]>("characters.json");
+        _jokes = _fileHelper.LoadTextFromFile<JokeModel[]>("jokes.json");
 
+        _currentCharacter = _characters[GD.Randi() % _characters.Length];
 
+		RunRound();
+    }
+
+	public void RunRound()
+	{
+		// Generate joke buttons
+		// 
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
-	}
+    }
 }

@@ -1,4 +1,4 @@
-public partial class Character_Model
+public partial class CharacterModel
 {
     public string Name { get; set; }
     public string Like { get; set; }

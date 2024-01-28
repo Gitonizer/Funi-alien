@@ -8,15 +8,119 @@
 		"Text": "- Why don't scientists trust atoms? Because they make up everything... just like a silent but deadly fart!"
 	},
 	{
+		"Type": "fart",
+		"Text": "Why did the fart go to the party? Because it wanted to be a gas of honor!"
+	},
+	{
+		"Type": "fart",
+		"Text": "What's a skeleton's least favorite room in the house? The living room, because that's where all the farts happen!"
+	},
+	{
+		"Type": "fart",
+		"Text": "Why do farts always tell the truth? Because they can't hold anything back!"
+	},
+	{
+		"Type": "fart",
+		"Text": "What do you call someone who doesn't fart in public? A private tutor!"
+	},
+	{
+		"Type": "fart",
+		"Text": "Why don't scientists trust farts? Because they can't always be analyzed for their composition!"
+	},
+	{
+		"Type": "fart",
+		"Text": "Why was the math book sad? Because it had too many problems, especially in the 'algebra' chapter!"
+	},
+	{
+		"Type": "fart",
+		"Text": "What's a ninja's favorite type of shoes? Sneakers!"
+	},
+	{
+		"Type": "fart",
+		"Text": "Why did the bicycle fall over? Because it was two-tired from all the flatulence!"
+	},
+	{
+		"Type": "fart",
+		"Text": "What do you call a dinosaur fart? A blast from the past!"
+	},
+	{
+		"Type": "fart",
+		"Text": "Why don't beans ever get in trouble? Because they know how to hold their gas!"
+	},
+	{
 		"Type": "technology",
 		"Text": "Why do programmers prefer dark mode? Because light attracts bugs!"
 	},
 	{
 		"Type": "technology",
-		"Text": "NO MEU TEMPO É QUE ERA"
+		"Text": "Why did the computer catch a cold? It left its Windows open!"
+	},
+	{
+		"Type": "technology",
+		"Text": "What did one iPhone say to the other? 'I think we need to sync.'"
+	},
+	{
+		"Type": "technology",
+		"Text": "Why did the robot go on a diet? It had too many bytes!"
+	},
+	{
+		"Type": "technology",
+		"Text": "Why do IT support people never get mad? Because they have too much cache!"
+	},
+	{
+		"Type": "technology",
+		"Text": "Why was the computer cold? It left its Windows open!"
+	},
+	{
+		"Type": "technology",
+		"Text": "Why did the smartphone go to therapy? It had too many issues with its buttons!"
+	},
+	{
+		"Type": "technology",
+		"Text": "How does a computer get drunk? It takes screenshots!"
 	},
 	{
 		"Type": "babble",
 		"Text": "gugu dada"
-	}	
+	},
+	{
+		"Type": "babble",
+		"Text": "gugu gaga gugu baba"
+	},
+	{
+		"Type": "babble",
+		"Text": "gugud daa"
+	},
+	{
+		"Type": "babble",
+		"Text": "UGA BUGA BUGAAA"
+	},
+	{
+		"Type": "babble",
+		"Text": "ma ma dudu dada dudu"
+	},
+	{
+		"Type": "babble",
+		"Text": "mada bada dabadaba duu"
+	},
+	{
+		"Type": "babble",
+		"Text": "balalbalbaldasudidashvnjas"
+	},
+	{
+		"Type": "babble",
+		"Text": "asdsadsadsniodnoa"
+	},
+	{
+		"Type": "babble",
+		"Text": "gaga ba gaga da ba gaga"
+	},
+	{
+		"Type": "babble",
+		"Text": "gimmi fu gimmi fa gimmi daba daba daaa"
+	},
+	{
+		"Type": "babble",
+		"Text": "BADA BADAAAAAAAA"
+	}
 ]

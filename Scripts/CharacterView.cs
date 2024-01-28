@@ -22,6 +22,7 @@ public partial class CharacterView : Node
 	private Texture  _angryExpressiontexture;
 	private Texture  _happyExpressiontexture;
 
+
 	private string _characterName;
 
 	// Called when the node enters the scene tree for the first time.
@@ -81,12 +82,13 @@ public partial class CharacterView : Node
 	/// Defaut expression is Neutral
 	/// </summary>
 	/// <param name="emotion"></param>
-	public void ChangeExpression(string emotion){
+	private void ChangeExpression(string emotion){
 		GD.Print("Changin expression to ... " + emotion);
 		switch (emotion)
 		{
 			case Constants.EXPRESSION_ANGRY:
 				_expressionBase.Texture = (Texture2D) _angryExpressiontexture;
+				
 			break;
 
 			case Constants.EXPRESSION_HAPPY:
@@ -97,5 +99,10 @@ public partial class CharacterView : Node
 				_expressionBase.Texture = (Texture2D) _neutralExpressiontexture;
 			break;
 		}
+	}
+
+	public void ChangeMood(string emotion){
+	
+		ChangeExpression(emotion);
 	}
 }

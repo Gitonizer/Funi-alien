@@ -69,13 +69,13 @@ public partial class LevelManager : Node
         //emote charcter
         
         if(_currentCharacter.Like.Equals(joke.Type)){
-            _mainCharacter.ChangeExpression(Constants.EXPRESSION_HAPPY);
+            _mainCharacter.ChangeMood(Constants.EXPRESSION_HAPPY);
             //add satisfaction
         }else if (_currentCharacter.Dislike.Equals(joke.Type)){
-            _mainCharacter.ChangeExpression(Constants.EXPRESSION_ANGRY);
+            _mainCharacter.ChangeMood(Constants.EXPRESSION_ANGRY);
             //remove satisfaction
         }else{
-            _mainCharacter.ChangeExpression(Constants.EXPRESSION_NEUTRAL);
+            _mainCharacter.ChangeMood(Constants.EXPRESSION_NEUTRAL);
         }
 		// evaluate if game ending
         

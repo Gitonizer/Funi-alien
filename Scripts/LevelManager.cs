@@ -50,6 +50,8 @@ public partial class LevelManager : Node
     {
         _characters = _fileHelper.LoadTextFromFile<List<CharacterModel>>("characters.json");
         _jokes = _fileHelper.LoadTextFromFile<List<JokeModel>>("jokes.json");
+
+        if (_characters == null || _jokes == null) { GD.Print("RUH ROH"); }
     }
 
 	public void StartLevel()

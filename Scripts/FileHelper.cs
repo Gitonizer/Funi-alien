@@ -9,7 +9,12 @@ public partial class FileHelper
 
 	public FileHelper()
 	{
-        path = ProjectSettings.GlobalizePath("res://Resources/");
+		if (OS.HasFeature("editor"))
+			path = ProjectSettings.GlobalizePath("res://Resources/");
+		else
+			path = OS.GetExecutablePath().GetBaseDir().PathJoin("Resources/");
+
+		GD.Print(path);
     }
 
 	public T LoadTextFromFile<T>(string fileName)
@@ -21,7 +26,9 @@ public partial class FileHelper
 
         filePath = Path.Join(path, fileName);
 
-		if (!File.Exists(filePath))
+        GD.Print(filePath);
+
+        if (!File.Exists(filePath))
 		{
 			GD.Print("no file found");
 			return returnData;

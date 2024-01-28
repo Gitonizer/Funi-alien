@@ -19,7 +19,7 @@ public partial class LevelManager : Node
 
     [Export]
     private Node SceneNode;
-    [Export]
+
     private PersistentData _persistentData;
 
 	private FileHelper _fileHelper;
@@ -41,7 +41,7 @@ public partial class LevelManager : Node
 
         StartLevel();
 
-        GD.Print(_persistentData.Level);
+        _persistentData = (PersistentData)GetNode("/root/PersistentData");
     }
 
     private void LoadFiles()
@@ -137,6 +137,11 @@ public partial class LevelManager : Node
         }
 
         returnJokes.Shuffle();
+
+        foreach (var itjokeem in returnJokes)
+        {
+            GD.Print(itjokeem.Type);
+        }
 
         return returnJokes;
     }

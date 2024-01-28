@@ -1,0 +1,21 @@
+[gd_scene load_steps=5 format=3 uid="uid://dwdagwin4umtc"]
+
+[ext_resource type="Script" path="res://Scripts/LevelManager.cs" id="1_v04g2"]
+[ext_resource type="PackedScene" uid="uid://b6big2masb30o" path="res://Nodes/background_node.tscn" id="2_nhy6f"]
+[ext_resource type="PackedScene" uid="uid://dbiegpqggetma" path="res://character_node.tscn" id="3_byjd5"]
+[ext_resource type="PackedScene" uid="uid://c6mx7kjqq3n0m" path="res://Nodes/dialog_node.tscn" id="4_a14aj"]
+
+[node name="ParentScene" type="Node"]
+
+[node name="Level_Manager" type="Node" parent="." node_paths=PackedStringArray("_mainCharacter", "_dialogController", "SceneNode")]
+script = ExtResource("1_v04g2")
+_mainCharacter = NodePath("../Character_Node")
+_dialogController = NodePath("../Dialog_Node")
+SceneNode = NodePath("..")
+
+[node name="Background_Node" parent="." instance=ExtResource("2_nhy6f")]
+
+[node name="Character_Node" parent="." instance=ExtResource("3_byjd5")]
+
+[node name="Dialog_Node" parent="." node_paths=PackedStringArray("_jokeButtonControllers") instance=ExtResource("4_a14aj")]
+_jokeButtonControllers = [null, null, null]

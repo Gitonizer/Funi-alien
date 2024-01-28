@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b1s6hey0eh606"
-path="res://.godot/imported/character-01-expression.png-bfb329f32d0f79056bb05999b58ffda6.ctex"
+uid="uid://cpoyui5pj8r3a"
+path="res://.godot/imported/Moddbar_Board.png-787e31a2aec3026ca8dc2bfb4b6b05c8.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Textures/Character/character-01-expression.png"
-dest_files=["res://.godot/imported/character-01-expression.png-bfb329f32d0f79056bb05999b58ffda6.ctex"]
+source_file="res://Textures/Character/UIAssets/Moddbar_Board.png"
+dest_files=["res://.godot/imported/Moddbar_Board.png-787e31a2aec3026ca8dc2bfb4b6b05c8.ctex"]
 
 [params]
 

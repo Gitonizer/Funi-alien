@@ -16,7 +16,7 @@ public partial class CharacterView : Node
 	[Export]
 	private Sprite2D _expressionBase;
 	[Export]
-	private ProgressBar _progressBar;
+	private TextureProgressBar _progressBar;
 
 	private int MOOD_VALUE = 10;
 

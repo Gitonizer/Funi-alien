@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dm0mr7gd3rxu4"
-path="res://.godot/imported/character-01-face-base.png-971838d787b895b242d028976d3585cf.ctex"
+uid="uid://cmpr52q17fm3r"
+path="res://.godot/imported/Moddbar_BG.png-018e9704940ff42daec1f96b61bb6e95.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Textures/Character/character-01-face-base.png"
-dest_files=["res://.godot/imported/character-01-face-base.png-971838d787b895b242d028976d3585cf.ctex"]
+source_file="res://Textures/Character/UIAssets/Moddbar_BG.png"
+dest_files=["res://.godot/imported/Moddbar_BG.png-018e9704940ff42daec1f96b61bb6e95.ctex"]
 
 [params]
 

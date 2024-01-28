@@ -1,50 +1,86 @@
-[gd_scene load_steps=5 format=3 uid="uid://dbiegpqggetma"]
+[gd_scene load_steps=12 format=3 uid="uid://dbiegpqggetma"]
 
 [ext_resource type="Script" path="res://Scripts/CharacterView.cs" id="1_7sknb"]
-[ext_resource type="Texture2D" uid="uid://dm0mr7gd3rxu4" path="res://Textures/Character/character-01-face-base.png" id="2_kvgqt"]
-[ext_resource type="Texture2D" uid="uid://cfnbbvjxrlq2s" path="res://Textures/Character/character-01-hair.png" id="3_rbq5h"]
-[ext_resource type="Texture2D" uid="uid://b1s6hey0eh606" path="res://Textures/Character/character-01-expression.png" id="4_2ub2i"]
+[ext_resource type="Texture2D" uid="uid://cmr3i1apq1tgm" path="res://Textures/Character/Bruno/faceBase.png" id="2_doacb"]
+[ext_resource type="Texture2D" uid="uid://to86s3hsp31b" path="res://Textures/Character/Bruno/hairbase.png" id="3_mcaf7"]
+[ext_resource type="Texture2D" uid="uid://4vluit6f3sw6" path="res://Textures/Character/Bruno/expression_neutral.png" id="4_n7p8o"]
+[ext_resource type="Texture2D" uid="uid://cpoyui5pj8r3a" path="res://Textures/Character/UIAssets/Moddbar_Board.png" id="5_fom40"]
+[ext_resource type="Texture2D" uid="uid://c2rfxsdme6eb5" path="res://Textures/Character/UIAssets/icon_happy.png" id="6_nrk1f"]
+[ext_resource type="Texture2D" uid="uid://du10skkqysu3f" path="res://Textures/Character/UIAssets/icon_sad.png" id="7_t62ak"]
+
+[sub_resource type="Gradient" id="Gradient_7d05p"]
+offsets = PackedFloat32Array(0, 0.994709)
+colors = PackedColorArray(0.517647, 0.262745, 0.266667, 1, 0.380392, 0.223529, 0.262745, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_e510k"]
+gradient = SubResource("Gradient_7d05p")
+width = 25
+height = 330
+fill_from = Vector2(1, 0)
+fill_to = Vector2(0, 1)
+metadata/_snap_enabled = true
+
+[sub_resource type="Gradient" id="Gradient_ixx5x"]
+colors = PackedColorArray(0.219608, 0.329412, 0.313726, 1, 0.305882, 0.431373, 0.376471, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_0dxuv"]
+gradient = SubResource("Gradient_ixx5x")
+width = 25
+height = 330
+fill_from = Vector2(1, 0)
+fill_to = Vector2(0, 1)
 
 [node name="Character_Node" type="Node" node_paths=PackedStringArray("_faceBase", "_hairBase", "_expressionBase", "_progressBar")]
 script = ExtResource("1_7sknb")
 _faceBase = NodePath("Character_Base_Sprite2D")
 _hairBase = NodePath("Character_Hair_Sprite2D")
 _expressionBase = NodePath("Character_Face_Sprite2D")
-_progressBar = NodePath("ProgressBar")
+_progressBar = NodePath("TextureProgressBar")
 
 [node name="Character_Base_Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(590, 319)
-scale = Vector2(10, 10)
-texture = ExtResource("2_kvgqt")
+scale = Vector2(5, 5)
+texture = ExtResource("2_doacb")
 
 [node name="Character_Hair_Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(590, 319)
-scale = Vector2(10, 10)
-texture = ExtResource("3_rbq5h")
+scale = Vector2(5, 5)
+texture = ExtResource("3_mcaf7")
 
 [node name="Character_Face_Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(590, 319)
-scale = Vector2(10, 10)
-texture = ExtResource("4_2ub2i")
+scale = Vector2(5, 5)
+texture = ExtResource("4_n7p8o")
 
-[node name="ProgressBar" type="ProgressBar" parent="."]
-offset_left = 45.0
-offset_top = 55.0
-offset_right = 110.0
-offset_bottom = 381.0
-value = 50.0
+[node name="TextureProgressBar" type="TextureProgressBar" parent="."]
+offset_left = 119.0
+offset_top = 92.0
+offset_right = 144.0
+offset_bottom = 422.0
+scale = Vector2(0.680618, 0.706073)
 fill_mode = 3
+texture_under = SubResource("GradientTexture2D_e510k")
+texture_progress = SubResource("GradientTexture2D_0dxuv")
 
-[node name="RichTextLabel" type="RichTextLabel" parent="."]
-offset_left = 45.0
-offset_top = 22.0
-offset_right = 120.0
-offset_bottom = 49.0
-text = "Amused"
+[node name="BoardTextureRect" type="TextureRect" parent="TextureProgressBar"]
+layout_mode = 0
+offset_left = -142.0
+offset_top = -10.0
+offset_right = 171.0
+offset_bottom = 346.0
+texture = ExtResource("5_fom40")
 
-[node name="RichTextLabel2" type="RichTextLabel" parent="."]
-offset_left = 35.0
-offset_top = 388.0
-offset_right = 133.0
-offset_bottom = 419.0
-text = "Unamused"
+[node name="TextureRect2" type="TextureRect" parent="TextureProgressBar"]
+offset_left = -16.0
+offset_top = 359.0
+offset_right = 48.0
+offset_bottom = 423.0
+texture = ExtResource("7_t62ak")
+
+[node name="TextureRect" type="TextureRect" parent="TextureProgressBar"]
+layout_mode = 0
+offset_left = -19.0
+offset_top = -85.0
+offset_right = 45.0
+offset_bottom = -21.0
+texture = ExtResource("6_nrk1f")

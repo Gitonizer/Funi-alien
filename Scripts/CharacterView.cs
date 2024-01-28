@@ -50,7 +50,6 @@ public partial class CharacterView : Node
 	{
 		string basePath = $"res://Textures/Character/{_characterName}/";
 		
-		GD.Print("Getting textures...");
 		try{
 			_faceBasetexture  = GD.Load<Texture>($"{basePath}faceBase.png");
 			_hairtexture  = GD.Load<Texture>($"{basePath}hairbase.png");
@@ -63,7 +62,6 @@ public partial class CharacterView : Node
 			GD.Print($"Error while getting Textures: {e.Message}");
 		}
 
-		GD.Print("Setting Sprites...");
 		try{
 						
 			_faceBase.Texture = (Texture2D)_faceBasetexture;
@@ -91,7 +89,6 @@ public partial class CharacterView : Node
 	/// </summary>
 	/// <param name="emotion"></param>
 	private void ChangeExpression(string emotion){
-		GD.Print("Changin expression to ... " + emotion);
 		switch (emotion)
 		{
 			case Constants.EXPRESSION_ANGRY:

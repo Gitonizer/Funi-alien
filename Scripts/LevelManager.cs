@@ -39,9 +39,11 @@ public partial class LevelManager : Node
 
         _dialogController.onNext += RunRound;
 
-        StartLevel();
-
         _persistentData = (PersistentData)GetNode("/root/PersistentData");
+
+        GD.Print("Level: " + _persistentData.Level);
+
+        StartLevel();
     }
 
     private void LoadFiles()
@@ -52,8 +54,40 @@ public partial class LevelManager : Node
 
 	public void StartLevel()
 	{
-        CharacterModel[] characterModels = _characters.ToArray();
-        _currentCharacter = characterModels[GD.Randi() % characterModels.Length];
+        List<CharacterModel> charToRemove = new List<CharacterModel>();
+        //remove used characters
+        if (_persistentData.usedCharacters != null)
+        {
+            charToRemove.Clear();
+            foreach (var characterName in _persistentData.usedCharacters)
+            {
+                charToRemove.AddRange(_characters.Where(character => character.Name == characterName));
+            }
+        }
+
+        CharacterModel[] charToRemoveArray = charToRemove.Distinct().ToArray();
+
+        foreach (var character in charToRemove)
+        {
+            _characters.Remove(character);
+        }
+
+        if (_characters.Count == 0)
+        {
+            GD.Print("GAME IS ENDED");
+            //PUT PARABAINS HERE
+            _persistentData.ResetLevel();
+            SceneNode.GetTree().ReloadCurrentScene();
+        }
+
+        foreach (var characterModel in charToRemoveArray)
+        {
+            GD.Print("blacklisted chars: " + characterModel.Name);
+        }
+        CharacterModel[] charactersArray = _characters.ToArray();
+
+        _currentCharacter = charactersArray[GD.Randi() % charactersArray.Length];
+        _persistentData.BlackListCharacter(_currentCharacter.Name);
         _characters.Remove(_currentCharacter);
 		
 		_mainCharacter.SetCharacter(_currentCharacter.Name);
@@ -63,7 +97,6 @@ public partial class LevelManager : Node
 
 	public void RunRound()
 	{
-        GD.Print("RunRound..");
         // get jokes
 		List<JokeModel> roundJokes = GetRandomJokes();
 

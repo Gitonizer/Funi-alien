@@ -1,19 +1,26 @@
-[gd_scene load_steps=5 format=3 uid="uid://t7xjw5dtw74s"]
+[gd_scene load_steps=6 format=3 uid="uid://t7xjw5dtw74s"]
 
 [ext_resource type="Script" path="res://Scripts/LevelManager.cs" id="1_i7cin"]
 [ext_resource type="PackedScene" uid="uid://b6big2masb30o" path="res://Nodes/background_node.tscn" id="2_pdipv"]
 [ext_resource type="PackedScene" uid="uid://c6mx7kjqq3n0m" path="res://Nodes/dialog_node.tscn" id="3_0opx3"]
 [ext_resource type="PackedScene" uid="uid://dbiegpqggetma" path="res://character_node.tscn" id="3_bf81x"]
+[ext_resource type="Script" path="res://Scripts/PersistentData.cs" id="5_ocv7x"]
 
 [node name="Main_Node2D" type="Node2D"]
 
-[node name="Level_Manager" type="Node" parent="." node_paths=PackedStringArray("_mainCharacter", "_dialogController")]
+[node name="ParentScene" type="Node" parent="."]
+
+[node name="Level_Manager" type="Node" parent="ParentScene" node_paths=PackedStringArray("_mainCharacter", "_dialogController", "_persistentData")]
 script = ExtResource("1_i7cin")
 _mainCharacter = NodePath("../Character_Node")
 _dialogController = NodePath("../Dialog_Node")
+_persistentData = NodePath("../../PersistentData")
 
-[node name="Background_Node" parent="." instance=ExtResource("2_pdipv")]
+[node name="Background_Node" parent="ParentScene" instance=ExtResource("2_pdipv")]
 
-[node name="Character_Node" parent="." instance=ExtResource("3_bf81x")]
+[node name="Character_Node" parent="ParentScene" instance=ExtResource("3_bf81x")]
 
-[node name="Dialog_Node" parent="." instance=ExtResource("3_0opx3")]
+[node name="Dialog_Node" parent="ParentScene" instance=ExtResource("3_0opx3")]
+
+[node name="PersistentData" type="Node" parent="."]
+script = ExtResource("5_ocv7x")

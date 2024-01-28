@@ -16,9 +16,13 @@ public partial class LevelManager : Node
 	private CharacterView _mainCharacter;
     [Export]
     private DialogController _dialogController;
+
+    [Export]
+    private PersistentData _persistentData; 
+
 	private FileHelper _fileHelper;
 
-	private CharacterModel[] _characters;
+	private List<CharacterModel> _characters;
     private List<JokeModel> _jokes;
 
 	private CharacterModel _currentCharacter;
@@ -38,13 +42,15 @@ public partial class LevelManager : Node
 
     private void LoadFiles()
     {
-        _characters = _fileHelper.LoadTextFromFile<CharacterModel[]>("characters.json");
+        _characters = _fileHelper.LoadTextFromFile<List<CharacterModel>>("characters.json");
         _jokes = _fileHelper.LoadTextFromFile<List<JokeModel>>("jokes.json");
     }
 
 	public void StartLevel()
 	{
-        _currentCharacter = _characters[GD.Randi() % _characters.Length];
+        CharacterModel[] characterModels = _characters.ToArray();
+        _currentCharacter = characterModels[GD.Randi() % characterModels.Length];
+        _characters.Remove(_currentCharacter);
 		
 		_mainCharacter.SetCharacter(_currentCharacter.Name);
 
@@ -77,11 +83,21 @@ public partial class LevelManager : Node
         }
 
 		// evaluate if game ending
-        if (_mainCharacter.CurrentMood < 0 || _mainCharacter.CurrentMood > 100)
+        if (_mainCharacter.CurrentMood >= 100)
         {
-            GD.Print("GAME OVER");
+            GD.Print("GAME WIN");
+            _persistentData.IncrementLevel();
+            GetTree().ReloadCurrentScene();
         }
-        
+        else if (_mainCharacter.CurrentMood <= 0)
+        {
+            GD.Print("GAME LOSE");
+            //PUT LOSE MESSAGE HERE BEFORE CHANGING SCENE!!! WARNING!!!
+            _persistentData.ResetLevel();
+            GetTree().ReloadCurrentScene();
+        }
+
+
     }   
 
     // Called every frame. 'delta' is the elapsed time since the previous frame.

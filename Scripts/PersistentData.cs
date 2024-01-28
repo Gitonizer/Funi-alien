@@ -18,7 +18,13 @@ public partial class PersistentData : Node
 		Level = 0;
 	}
 
-	public void BlackListCharacter(string character)
+	public void ResetCharacters()
+	{
+		usedCharacters.Clear();
+    }
+
+
+    public void BlackListCharacter(string character)
 	{
 		if (usedCharacters == null) usedCharacters = new List<string>();
 

@@ -72,14 +72,6 @@ public partial class LevelManager : Node
             _characters.Remove(character);
         }
 
-        if (_characters.Count == 0)
-        {
-            GD.Print("GAME IS ENDED");
-            //PUT PARABAINS HERE
-            _persistentData.ResetLevel();
-            SceneNode.GetTree().ReloadCurrentScene();
-        }
-
         foreach (var characterModel in charToRemoveArray)
         {
             GD.Print("blacklisted chars: " + characterModel.Name);
@@ -89,8 +81,8 @@ public partial class LevelManager : Node
         _currentCharacter = charactersArray[GD.Randi() % charactersArray.Length];
         _persistentData.BlackListCharacter(_currentCharacter.Name);
         _characters.Remove(_currentCharacter);
-		
-		_mainCharacter.SetCharacter(_currentCharacter.Name);
+
+        _mainCharacter.SetCharacter(_currentCharacter.Name);
 
         RunRound();
     }
@@ -124,11 +116,21 @@ public partial class LevelManager : Node
         {
             GD.Print("GAME WIN");
             _persistentData.IncrementLevel();
+            if (_persistentData.usedCharacters.Count >= 3)
+            {
+                GD.Print("GAME END");
+                _persistentData.ResetCharacters();
+            }
             SceneNode.GetTree().ReloadCurrentScene();
         }
         else if (_mainCharacter.CurrentMood <= 0)
         {
             GD.Print("GAME LOSE");
+            if (_persistentData.usedCharacters.Count >= 3)
+            {
+                GD.Print("GAME END");
+                _persistentData.ResetCharacters();
+            }
             //PUT LOSE MESSAGE HERE BEFORE CHANGING SCENE!!! WARNING!!!
             _persistentData.ResetLevel();
             SceneNode.GetTree().ReloadCurrentScene();

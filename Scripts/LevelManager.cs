@@ -18,7 +18,9 @@ public partial class LevelManager : Node
     private DialogController _dialogController;
 
     [Export]
-    private PersistentData _persistentData; 
+    private Node SceneNode;
+    [Export]
+    private PersistentData _persistentData;
 
 	private FileHelper _fileHelper;
 
@@ -38,6 +40,8 @@ public partial class LevelManager : Node
         _dialogController.onNext += RunRound;
 
         StartLevel();
+
+        GD.Print(_persistentData.Level);
     }
 
     private void LoadFiles()
@@ -87,14 +91,14 @@ public partial class LevelManager : Node
         {
             GD.Print("GAME WIN");
             _persistentData.IncrementLevel();
-            GetTree().ReloadCurrentScene();
+            SceneNode.GetTree().ReloadCurrentScene();
         }
         else if (_mainCharacter.CurrentMood <= 0)
         {
             GD.Print("GAME LOSE");
             //PUT LOSE MESSAGE HERE BEFORE CHANGING SCENE!!! WARNING!!!
             _persistentData.ResetLevel();
-            GetTree().ReloadCurrentScene();
+            SceneNode.GetTree().ReloadCurrentScene();
         }
 
 

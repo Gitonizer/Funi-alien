@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bjpu7o50niae3"]
+
+[ext_resource type="Script" path="res://Scripts/PersistentData.cs" id="1_vokfb"]
+
+[node name="PersistentData" type="Node"]
+script = ExtResource("1_vokfb")

@@ -38,17 +38,17 @@ _expressionBase = NodePath("Character_Face_Sprite2D")
 _progressBar = NodePath("TextureProgressBar")
 
 [node name="Character_Base_Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(590, 319)
+position = Vector2(590, 217)
 scale = Vector2(5, 5)
 texture = ExtResource("2_doacb")
 
 [node name="Character_Hair_Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(590, 319)
+position = Vector2(590, 217)
 scale = Vector2(5, 5)
 texture = ExtResource("3_mcaf7")
 
 [node name="Character_Face_Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(590, 319)
+position = Vector2(590, 217)
 scale = Vector2(5, 5)
 texture = ExtResource("4_n7p8o")
 

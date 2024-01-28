@@ -27,8 +27,10 @@ public partial class CharacterView : Node
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
-		//SetCharacter("Baby");
+	
 	}
+
+	
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
@@ -68,9 +70,32 @@ public partial class CharacterView : Node
 	/// Recives a character name.
 	/// </summary>
 	/// <param name="characterName"> String parameeter with name</param>
-	public void SetCharacter(string characterName){
-		
+	public void SetCharacter(string characterName){	
 		_characterName = characterName;
 		LoadTextures();
+	}
+
+	/// <summary>
+	/// Recives a emotion as sting
+	/// Valid values: angry, happy
+	/// Defaut expression is Neutral
+	/// </summary>
+	/// <param name="emotion"></param>
+	public void ChangeExpression(string emotion){
+		GD.Print("Changin expression to ... " + emotion);
+		switch (emotion)
+		{
+			case Constants.EXPRESSION_ANGRY:
+				_expressionBase.Texture = (Texture2D) _angryExpressiontexture;
+			break;
+
+			case Constants.EXPRESSION_HAPPY:
+				_expressionBase.Texture = (Texture2D) _happyExpressiontexture;
+			break;
+			
+			default:
+				_expressionBase.Texture = (Texture2D) _neutralExpressiontexture;
+			break;
+		}
 	}
 }

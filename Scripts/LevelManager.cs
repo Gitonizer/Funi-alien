@@ -66,8 +66,20 @@ public partial class LevelManager : Node
     {
         // Run dialog
 		// Change mood bar
+        //emote charcter
+        
+        if(_currentCharacter.Like.Equals(joke.Type)){
+            _mainCharacter.ChangeExpression(Constants.EXPRESSION_HAPPY);
+            //add satisfaction
+        }else if (_currentCharacter.Dislike.Equals(joke.Type)){
+            _mainCharacter.ChangeExpression(Constants.EXPRESSION_ANGRY);
+            //remove satisfaction
+        }else{
+            _mainCharacter.ChangeExpression(Constants.EXPRESSION_NEUTRAL);
+        }
 		// evaluate if game ending
-    }
+        
+    }   
 
     // Called every frame. 'delta' is the elapsed time since the previous frame.
     public override void _Process(double delta)

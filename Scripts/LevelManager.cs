@@ -90,8 +90,8 @@ public partial class LevelManager : Node
         List<JokeModel> returnJokes = new List<JokeModel>
         {
             likeJokes[GD.Randi() % likeJokes.Length],
-            dislikeJokes[GD.Randi() % likeJokes.Length],
-            neutralJokes[GD.Randi() % likeJokes.Length]
+            dislikeJokes[GD.Randi() % dislikeJokes.Length],
+            neutralJokes[GD.Randi() % neutralJokes.Length]
         };
 
         return returnJokes;

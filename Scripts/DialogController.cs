@@ -48,7 +48,7 @@ public partial class DialogController : Node
 		}
 	}
 
-	public void SetJokeButton(List<JokeModel> jokeModels ){
+	public void SetJokeButton(List<JokeModel> jokeModels, Action<JokeModel> evaluate){
 		
 		for(int i= 0; i< _jokeButtonControllers.Length; i++)
 		{
@@ -57,7 +57,9 @@ public partial class DialogController : Node
 			_jokeButtonControllers[i].SetJokeButton(jokeModels[i]);
 			
 			_jokeButtonControllers[i].onJokeSelection += JokeButtonPressed;
-		}
+			_jokeButtonControllers[i].onJokeSelection += evaluate;
+
+        }
 	}	
 
 	private void SwitchPanels()

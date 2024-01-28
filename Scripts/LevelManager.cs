@@ -19,7 +19,7 @@ public partial class LevelManager : Node
 	private FileHelper _fileHelper;
 
 	private CharacterModel[] _characters;
-    private JokeModel[] _jokes;
+    private List<JokeModel> _jokes;
 
 	private CharacterModel _currentCharacter;
 	private JokeModel _currentJoke;
@@ -29,15 +29,17 @@ public partial class LevelManager : Node
 	{
         _fileHelper = new FileHelper();
 
-		_characters = _fileHelper.LoadTextFromFile<CharacterModel[]>("characters.json");
-        _jokes = _fileHelper.LoadTextFromFile<JokeModel[]>("jokes.json");
-
-
-        GD.Print(_jokes[0].Text);
+        LoadFiles();
 
         _dialogController.onNext += RunRound;
 
         StartLevel();
+    }
+
+    private void LoadFiles()
+    {
+        _characters = _fileHelper.LoadTextFromFile<CharacterModel[]>("characters.json");
+        _jokes = _fileHelper.LoadTextFromFile<List<JokeModel>>("jokes.json");
     }
 
 	public void StartLevel()
@@ -45,7 +47,6 @@ public partial class LevelManager : Node
         _currentCharacter = _characters[GD.Randi() % _characters.Length];
 		
 		_mainCharacter.SetCharacter(_currentCharacter.Name);
-
 
         RunRound();
     }
@@ -56,12 +57,12 @@ public partial class LevelManager : Node
         // get jokes
 		List<JokeModel> roundJokes = GetRandomJokes();
 
-        _dialogController.SetJokeButton(roundJokes);
+        _dialogController.SetJokeButton(roundJokes, EvaluateAnswer);
 
         //generate jokes
     }
 
-	public void EvaluateAnswer()
+	public void EvaluateAnswer(JokeModel joke)
     {
         // Run dialog
 		// Change mood bar
@@ -79,12 +80,13 @@ public partial class LevelManager : Node
         JokeModel[] dislikeJokes = _jokes.Where(joke => joke.Type == _currentCharacter.Dislike).ToArray();
         JokeModel[] neutralJokes = _jokes.Where(joke => joke.Type == _currentCharacter.Neutral).ToArray();
 
-        GD.Print("JOKE SIZE: " + _jokes.Length);
-
         if (likeJokes.Length == 0 || dislikeJokes.Length == 0 || neutralJokes.Length == 0)
         {
-            GD.Print("NOT ENOUGH JOKES FOR THE ROUND");
-            return new List<JokeModel>();
+            LoadFiles();
+
+            likeJokes = _jokes.Where(joke => joke.Type == _currentCharacter.Like).ToArray();
+            dislikeJokes = _jokes.Where(joke => joke.Type == _currentCharacter.Dislike).ToArray();
+            neutralJokes = _jokes.Where(joke => joke.Type == _currentCharacter.Neutral).ToArray();
         }
 
         List<JokeModel> returnJokes = new List<JokeModel>
@@ -93,6 +95,13 @@ public partial class LevelManager : Node
             dislikeJokes[GD.Randi() % dislikeJokes.Length],
             neutralJokes[GD.Randi() % neutralJokes.Length]
         };
+
+        foreach (var joke in returnJokes)
+        {
+            _jokes.Remove(joke);
+        }
+
+        returnJokes.Shuffle();
 
         return returnJokes;
     }

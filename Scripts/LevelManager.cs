@@ -65,9 +65,7 @@ public partial class LevelManager : Node
 	public void EvaluateAnswer(JokeModel joke)
     {
         // Run dialog
-		// Change mood bar
-        //emote charcter
-        
+        //emote character
         if(_currentCharacter.Like.Equals(joke.Type)){
             _mainCharacter.ChangeMood(Constants.EXPRESSION_HAPPY);
             //add satisfaction
@@ -77,7 +75,12 @@ public partial class LevelManager : Node
         }else{
             _mainCharacter.ChangeMood(Constants.EXPRESSION_NEUTRAL);
         }
+
 		// evaluate if game ending
+        if (_mainCharacter.CurrentMood < 0 || _mainCharacter.CurrentMood > 100)
+        {
+            GD.Print("GAME OVER");
+        }
         
     }   
 

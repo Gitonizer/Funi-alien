@@ -15,6 +15,13 @@ public partial class CharacterView : Node
 	private Sprite2D _hairBase;
 	[Export]
 	private Sprite2D _expressionBase;
+	[Export]
+	private ProgressBar _progressBar;
+
+	private int MOOD_VALUE = 10;
+
+	[Export]
+	public int CurrentMood;
 
 	private Texture  _faceBasetexture;
 	private Texture  _hairtexture;
@@ -28,8 +35,9 @@ public partial class CharacterView : Node
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
-	
-	}
+		CurrentMood = 50;
+		_progressBar.Value = 50;
+    }
 
 	
 
@@ -101,8 +109,31 @@ public partial class CharacterView : Node
 		}
 	}
 
+	private void ChangeSlider(string emotion)
+	{
+        switch (emotion)
+        {
+            case Constants.EXPRESSION_ANGRY:
+                _progressBar.Value -= MOOD_VALUE;
+				CurrentMood -= MOOD_VALUE;
+
+                break;
+
+            case Constants.EXPRESSION_HAPPY:
+                _progressBar.Value += MOOD_VALUE;
+                CurrentMood += MOOD_VALUE;
+
+                break;
+
+            default:
+                _expressionBase.Texture = (Texture2D)_neutralExpressiontexture;
+                break;
+        }
+    }
+
 	public void ChangeMood(string emotion){
 	
 		ChangeExpression(emotion);
+		ChangeSlider(emotion);
 	}
 }

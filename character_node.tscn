@@ -5,11 +5,12 @@
 [ext_resource type="Texture2D" uid="uid://cfnbbvjxrlq2s" path="res://Textures/Character/character-01-hair.png" id="3_rbq5h"]
 [ext_resource type="Texture2D" uid="uid://b1s6hey0eh606" path="res://Textures/Character/character-01-expression.png" id="4_2ub2i"]
 
-[node name="Character_Node" type="Node" node_paths=PackedStringArray("_faceBase", "_hairBase", "_expressionBase")]
+[node name="Character_Node" type="Node" node_paths=PackedStringArray("_faceBase", "_hairBase", "_expressionBase", "_progressBar")]
 script = ExtResource("1_7sknb")
 _faceBase = NodePath("Character_Base_Sprite2D")
 _hairBase = NodePath("Character_Hair_Sprite2D")
 _expressionBase = NodePath("Character_Face_Sprite2D")
+_progressBar = NodePath("ProgressBar")
 
 [node name="Character_Base_Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(590, 319)
@@ -25,3 +26,25 @@ texture = ExtResource("3_rbq5h")
 position = Vector2(590, 319)
 scale = Vector2(10, 10)
 texture = ExtResource("4_2ub2i")
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+offset_left = 45.0
+offset_top = 55.0
+offset_right = 110.0
+offset_bottom = 381.0
+value = 50.0
+fill_mode = 3
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+offset_left = 45.0
+offset_top = 22.0
+offset_right = 120.0
+offset_bottom = 49.0
+text = "Amused"
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="."]
+offset_left = 35.0
+offset_top = 388.0
+offset_right = 133.0
+offset_bottom = 419.0
+text = "Unamused"

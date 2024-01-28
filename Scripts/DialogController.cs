@@ -17,7 +17,9 @@ public partial class DialogController : Node
 	
 	public Action onNext;
 
-	public override void _Ready()
+	private Action<JokeModel> evaluateAction;
+
+    public override void _Ready()
 	{
 		_dialogContainer.Visible = false;
 		_buttonsContainer.Visible = true;		
@@ -45,19 +47,22 @@ public partial class DialogController : Node
 			GD.Print("Release");
 			_jokeButtonControllers[i].ReleaseBttn();
 			_jokeButtonControllers[i].onJokeSelection -= JokeButtonPressed;
-		}
+            _jokeButtonControllers[i].onJokeSelection -= evaluateAction;
+        }
 	}
 
 	public void SetJokeButton(List<JokeModel> jokeModels, Action<JokeModel> evaluate){
-		
-		for(int i= 0; i< _jokeButtonControllers.Length; i++)
+
+		evaluateAction = evaluate;
+
+        for (int i= 0; i< _jokeButtonControllers.Length; i++)
 		{
 			GD.Print("SetJokeButton...");
 
 			_jokeButtonControllers[i].SetJokeButton(jokeModels[i]);
 			
 			_jokeButtonControllers[i].onJokeSelection += JokeButtonPressed;
-			_jokeButtonControllers[i].onJokeSelection += evaluate;
+			_jokeButtonControllers[i].onJokeSelection += evaluateAction;
 
         }
 	}	
